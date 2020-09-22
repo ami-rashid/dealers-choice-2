@@ -10,19 +10,23 @@ class Container extends React.Component{
 //   }
   
   render(){
-    console.log(this.props)
-    const { container } = this.props;
+    const { specificContainer } = this.props;
+    console.log(specificContainer);
+    
     return (
       <div>
-        <h1>{ container.name }</h1>
+        <h1>{ specificContainer && specificContainer.name } </h1>
       </div>
     )
   }
 }
 
 
-export default connect(({ container })=> {
-    return { container }}, (dispatch)=> {
+export default connect(({ container }, props)=> {
+    const id = props.match.params.id * 1;
+    const specificContainer = container.find(c => c.id = id);
+
+    return { specificContainer }}, (dispatch)=> {
     return {
       load: ()=> dispatch(fetchContainers())
     }

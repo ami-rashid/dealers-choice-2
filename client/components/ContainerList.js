@@ -2,8 +2,8 @@ import React from 'react'
 import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
 
-const ContainerList = ( containers )=> {
-    console.log(containers)
+const ContainerList = (props)=> {
+  const containers = props.container;
     return (
       <ul className='containerList'>
         {
@@ -21,8 +21,6 @@ const ContainerList = ( containers )=> {
     )
   }
   
-  export default connect((props)=> {
-    console.log(props)
-    console.log('hello')
-    return { containers: [] }
+  export default connect(({ container })=> {
+    return { container }
   })(ContainerList)
