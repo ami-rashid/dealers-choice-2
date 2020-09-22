@@ -1,10 +1,10 @@
-import React from 'react';
-import { connect } from 'react-redux';
-import { Link } from 'react-router-dom';
+import React from 'react'
+import { connect } from 'react-redux'
+import { Link } from 'react-router-dom'
 
-const Items = ({ items })=> {
+const ItemList = ({ items })=> {
     return (
-      <ul>
+      <ul className='itemList'>
         {
           items.map( item => {
             return (
@@ -13,15 +13,13 @@ const Items = ({ items })=> {
                   { item.name }
                 </Link>
               </li>
-            );
+            )
           })
         }
       </ul>
-    );
-  };
+    )
+  }
   
-  export default connect(({ items})=> {
-    return {
-      items
-    };
-  })(Items);
+  export default connect(({ items })=> {
+    return { items }
+  })(ItemList)

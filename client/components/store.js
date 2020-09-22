@@ -23,7 +23,7 @@ const setContainers = (containers) => {
 const setContainer = (container) => {
     return {
         type: SET_CONTAINER,
-        containers
+        container
     }
 }
 
@@ -103,30 +103,50 @@ const initialState = {
     item: {}
 }
 
-const reducer = (state = initialState, action) => {
+const containerReducer = (state = [], action) => {
     switch (action.type) {
         case SET_CONTAINERS:
             const containers = action.containers
-            return {...state, containers}
+            return containers
         case SET_CONTAINER:
             const container = action.container
             return {...state, container}
-        case SET_BOXES:
-            const boxes = action.boxes
-            return {...state, boxes}
-        case SET_BOX:
-            const box = action.box
-            return {...state, box}
-        case SET_ITEMS:
-            const items = action.items
-            return {...state, items}
-        case SET_ITEM:
-            const item = action.item
-            return {...state, item}
         default: 
             return state
     }
 }
+
+const boxReducer = (state = [], action) => {
+    switch (action.type) {
+        case SET_BOXES:
+            const boxes = action.boxes
+            return boxes
+        case SET_BOX:
+            const box = action.box
+            return {...state, box}
+        default:
+            return state
+    }
+}
+
+const itemReducer = (state = [], action) => {
+    switch (action.type) {
+        case SET_ITEMS:
+            const items = action.items
+            return items
+        case SET_ITEM:
+            const item = action.item
+            return {...state, item}
+        default:
+            return state
+    }
+}
+
+const reducer = combineReducers({
+    container: containerReducer,
+    box: boxReducer,
+    item: itemReducer
+})
 
 const store = createStore(reducer, applyMiddleware(thunk))
 

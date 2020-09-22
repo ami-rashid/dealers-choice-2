@@ -9,6 +9,11 @@ const seed = async () => {
         location: 'Back of the room, under the workbenches'
     })
 
+    await Container.create({
+        name: 'Alcohol Fridge',
+        location: 'Back of the room, under the workbenches'
+    })
+
     await Box.create({
         name: 'Beers',
         containerId: 1
