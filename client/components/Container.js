@@ -5,24 +5,24 @@ import { fetchContainers, fetchItems } from './store'
 
 class Container extends React.Component{
   
-//   componentDidMount(){
-//     this.props.load()
-//   }
-  
   render(){
-    console.log(this.props)
-    const { container } = this.props;
+    const { specificContainer } = this.props;
+    
     return (
       <div>
-        <h1>{ container.name }</h1>
+        <h1>{ specificContainer && specificContainer.name } </h1>
+        <button>Delete</button>
       </div>
     )
   }
 }
 
 
-export default connect(({ container })=> {
-    return { container }}, (dispatch)=> {
+export default connect(({ container }, props)=> {
+    const id = props.match.params.id * 1;
+    const specificContainer = container.find(container => container.id = id);
+
+    return { specificContainer }}, (dispatch)=> {
     return {
       load: ()=> dispatch(fetchContainers())
     }

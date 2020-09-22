@@ -94,15 +94,6 @@ const fetchItem = (id)=> {
 }
 
 //reducer
-const initialState = {
-    containers: [],
-    container: {},
-    boxes: [],
-    box: {},
-    items: [],
-    item: {}
-}
-
 const containerReducer = (state = [], action) => {
     switch (action.type) {
         case SET_CONTAINERS:

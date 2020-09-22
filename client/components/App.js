@@ -1,10 +1,10 @@
 import React from 'react'
-import ContainerList from './ContainerList'
 import { connect } from 'react-redux'
-import store, { fetchContainers, fetchBoxes, fetchItems, fetchContainer } from './store'
-import { HashRouter as Router, Link, Route} from 'react-router-dom'
+import { fetchContainers, fetchBoxes, fetchItems } from './store'
+import { HashRouter as Router, Route} from 'react-router-dom'
 import ItemList from './ItemList'
 import Item from './Item'
+import ContainerList from './ContainerList'
 import Container from './Container'
 
 class App extends React.Component{
@@ -22,8 +22,9 @@ class App extends React.Component{
         <Router>
           <div className='container'>
             <Route path='/' component={ ContainerList } />
-            <Route path='/containers' exact component={ ContainerList } />
-            <Route path='/containers/:id' exact component={ Container } />
+            <Route path='/containers'  component={ ContainerList } />
+            <Route path='/containers/:id'  component={ Container } />
+			      <Route path='/items'  component={ ItemList } />
           </div>
         </Router>
         </div>
@@ -33,7 +34,6 @@ class App extends React.Component{
   
   export default connect(
 	  (state)=> {
-		console.log(state)
       return {
         state
       };

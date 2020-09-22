@@ -10,8 +10,8 @@ const seed = async () => {
     })
 
     await Container.create({
-        name: 'Alcohol Fridge',
-        location: 'Back of the room, under the workbenches'
+        name: 'Medicine Cabinet',
+        location: 'Front of the room'
     })
 
     await Box.create({
